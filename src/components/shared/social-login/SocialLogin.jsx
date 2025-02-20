@@ -2,13 +2,16 @@ import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { AuthContext } from "../../../provider/auth-provider/AuthProvider";
+import { useNavigate } from "react-router";
 
 const SocialLogin = () => {
-    const { googleLogin, setUser } = useContext(AuthContext)
+    const { googleLogin, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleGoogleLogin = () => {
         googleLogin()
             .then((userCredential)=>{
                 setUser(userCredential.user)
+                navigate("/")
             })
             .catch((error) => {
                 toast.error(error.message)
