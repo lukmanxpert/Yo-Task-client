@@ -1,8 +1,6 @@
 import { useState } from "react";
 import TaskEdidModal from "../modal/TaskEdidModal";
-import { FaEye } from 'react-icons/fa6';
 import TaskDelete from "../modal/TaskDelete";
-import { GiClick } from 'react-icons/gi';
 import axios from "axios";
 
 const Done = ({ filteredTask, refetch }) => {
@@ -29,13 +27,13 @@ const Done = ({ filteredTask, refetch }) => {
     }
 
     return (
-        <div className='border border-green-500 mb-2  bg-[#000000df] p-2 rounded-sm' >
+        <div className=' mb-2  bg-[#bdc3c7] p-2 rounded-sm' >
             <div className="space-y-2">
-                <h1 className="text-xl text-white font-bold">{title}</h1>
-                <p className="text-gray-300">{description}</p>
+                <h1 className="text-xl text-black font-bold">{title}</h1>
+                <p className="text-black">{description}</p>
                 <div className="flex items-end gap-0">
                     <h1 className="bg-green-500 font-bold py-1 px-4 rounded-full">{category}</h1>
-                    <h3 className="py-1 px-4 text-white">{formattedDate}</h3>
+                    <h3 className="py-1 px-4 text-black">{formattedDate}</h3>
                 </div>
             </div>
 
@@ -53,7 +51,6 @@ const Done = ({ filteredTask, refetch }) => {
                         ></span>
                         <div className='flex items-center gap-2'>
                             <span className='relative '>Update</span>
-                            <FaEye className=' relative text-lg' />
                         </div>
 
                     </span>
@@ -78,7 +75,6 @@ const Done = ({ filteredTask, refetch }) => {
 
                             <div className='flex items-center gap-0'>
                                 <span className='relative'>Delete</span>
-                                <GiClick className=' relative text-lg' />
                             </div>
                         </span>
                     </div>

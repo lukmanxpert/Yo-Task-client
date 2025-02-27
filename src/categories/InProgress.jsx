@@ -29,13 +29,13 @@ const InProgress = ({ filteredTask, refetch }) => {
     }
 
     return (
-        <div className='border border-yellow-300 bg-[#0000009f] mb-2 p-2 rounded-sm' >
+        <div className='bg-[#bdc3c7] mb-2 p-2 rounded-sm' >
             <div className="space-y-2">
-                <h1 className="text-xl text-white font-bold">{title}</h1>
-                <p className="text-gray-200">{description}</p>
+                <h1 className="text-xl text-black font-bold">{title}</h1>
+                <p className="text-black">{description}</p>
                 <div className="flex items-end gap-0">
-                    <h1 className="bg-yellow-600 font-bold py-1 px-4 rounded-full">{category}</h1>
-                    <h3 className="py-1 px-4 text-white">{formattedDate}</h3>
+                    <h1 className="bg-yellow-400 font-bold py-1 px-4 rounded-full">{category}</h1>
+                    <h3 className="py-1 px-4 text-black">{formattedDate}</h3>
                 </div>
             </div>
             {/* */}
@@ -52,7 +52,6 @@ const InProgress = ({ filteredTask, refetch }) => {
                         ></span>
                         <div className='flex items-center gap-2'>
                             <span className='relative '>Update</span>
-                            <FaEye className=' relative text-lg' />
                         </div>
 
                     </span>
@@ -77,7 +76,6 @@ const InProgress = ({ filteredTask, refetch }) => {
 
                             <div className='flex items-center gap-0'>
                                 <span className='relative'>Delete</span>
-                                <GiClick className=' relative text-lg' />
                             </div>
                         </span>
                     </div>

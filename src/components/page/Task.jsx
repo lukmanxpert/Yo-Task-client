@@ -45,7 +45,7 @@ const Task = () => {
                 <Droppable droppableId="To-Do">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps}>
-                            <h1 className='text-center pb-3.5 text-xl font-bold sm:text-2xl'>TO-DO</h1>
+                            <h1 className='text-center pb-3.5 text-xl font-bold sm:text-2xl text-pink-700'>TODO'S</h1>
                             <div className='bg-[#0000000e] shadow-sm backdrop-blur-md sm:p-6 p-3 rounded-2xl'>
                                 {task.filter(task => task.category === "To-Do").map((filteredTask, index) => (
                                     <Draggable key={filteredTask._id} draggableId={filteredTask._id} index={index}>
@@ -66,7 +66,7 @@ const Task = () => {
                 <Droppable droppableId="In Progress">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps}>
-                            <h1 className='text-center text-xl font-bold sm:text-2xl pb-3.5'>In Progress</h1>
+                            <h1 className='text-center text-xl font-bold sm:text-2xl pb-3.5 text-pink-700'>In Progress</h1>
                             <div className='bg-[#0000000e] sm:p-6 p-3 rounded-2xl'>
                                 {task.filter(task => task.category === "In Progress").map((filteredTask, index) => (
                                     <Draggable key={filteredTask._id} draggableId={filteredTask._id} index={index}>
@@ -87,7 +87,7 @@ const Task = () => {
                 <Droppable droppableId="Done">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps}>
-                            <h1 className='text-center text-xl font-bold sm:text-2xl pb-3.5'>Done</h1>
+                            <h1 className='text-center text-xl font-bold sm:text-2xl pb-3.5 text-pink-700'>Done</h1>
                             <div className='bg-[#0000000e] sm:p-6 p-3 rounded-2xl'>
                                 {task.filter(task => task.category === "Done").map((filteredTask, index) => (
                                     <Draggable key={filteredTask._id} draggableId={filteredTask._id} index={index}>
