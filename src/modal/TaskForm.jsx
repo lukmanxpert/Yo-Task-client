@@ -16,7 +16,7 @@ const TaskForm = ({filteredTask,refetch,setIsEditModalOpen}) => {
             date
             
         }
-        axios.put(`http://localhost:5000/task/${_id}`, taskUpdate)
+        axios.put(`https://yo-task-server.vercel.app/task/${_id}`, taskUpdate)
             .then(result => {
                 console.log(result.data);
                 refetch()

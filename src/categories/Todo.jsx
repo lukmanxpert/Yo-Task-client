@@ -17,7 +17,7 @@ const Todo = ({ filteredTask, refetch }) => {
         setIsOpen(false)
     }
     const taskDelete = () => {
-        axios.delete(`http://localhost:5000/task/${_id}`)
+        axios.delete(`https://yo-task-server.vercel.app/task/${_id}`)
             .then(result => {
                 console.log(result.data);
                 refetch()

@@ -14,7 +14,7 @@ const Task = () => {
     const { data: task = [], isLoading, refetch } = useQuery({
         queryKey: ['task', user?.email],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/task/${user?.email}`);
+            const { data } = await axios.get(`https://yo-task-server.vercel.app/task/${user?.email}`);
             return data;
         }
     });
@@ -30,7 +30,7 @@ const Task = () => {
         const newCategory = destination.droppableId;
 
         try {
-            await axios.put(`http://localhost:5000/task/update/${draggableId}`, { category: newCategory });
+            await axios.put(`https://yo-task-server.vercel.app/task/update/${draggableId}`, { category: newCategory });
             refetch(); 
         } catch (error) {
             console.error("Error updating task category:", error);

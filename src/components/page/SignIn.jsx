@@ -19,7 +19,7 @@ const SignIn = () => {
                     userphoto: result.user?.photoURL,
                     userRole: "User"
                 }
-                axios.post('http://localhost:5000/users', userInfo)
+                axios.post('https://yo-task-server.vercel.app/users', userInfo)
                     .then(result => {
                         setUser(result.data);
                         console.log(result.data);

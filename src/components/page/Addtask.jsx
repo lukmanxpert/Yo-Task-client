@@ -20,7 +20,7 @@ const AddTask = () => {
             date,
             userEmail
         }
-        axios.post('http://localhost:5000/task', taskAdd)
+        axios.post('https://yo-task-server.vercel.app/task', taskAdd)
             .then(result => {
                 console.log(result.data);
                 if (result.data) {
