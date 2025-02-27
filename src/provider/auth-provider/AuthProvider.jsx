@@ -1,46 +1,65 @@
 /* eslint-disable react/prop-types */
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
-import { auth } from "../../firebase/firebase.config";
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const AuthContext = createContext(null)
-
-const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true)
-    const googleProvider = new GoogleAuthProvider();
-    const googleLogin = () => {
-        return signInWithPopup(auth, googleProvider)
-    }
-    const logOutUser = () => {
-        return signOut(auth);
-    }
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (userCredential) => {
-            if (userCredential) {
-                setUser(userCredential)
-                setLoading(false)
-            } else {
-                setUser(null)
-                setLoading(false)
-            }
-        })
-        return () => unsubscribe()
-    }, [])
-    const authInfo = {
-        user,
-        setUser,
-        loading,
-        googleLogin,
-        logOutUser
-    }
-    console.log(user);
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
-
-export default AuthProvider;
+import {  
+    GoogleAuthProvider, 
+    onAuthStateChanged,  
+    signInWithPopup, 
+    signOut, 
+    updateProfile 
+  } from 'firebase/auth';
+  import { createContext, useEffect, useState } from 'react';
+  import { auth } from '../firebase/firebase.init';
+  
+  export const AuthContext = createContext();
+  
+  const AuthProvider = ({ children }) => {
+      const [user, setUser] = useState(null);
+      const [loading, setLoading] = useState(true); // loader -> loading করা হলো
+      const provider = new GoogleAuthProvider();
+  
+      // Google Sign In
+      const googleRegister = () => {
+          setLoading(true);
+          return signInWithPopup(auth, provider);
+      };
+  
+      // User Logout
+      const userLogout = () => {
+          setLoading(true);
+          return signOut(auth);
+      };
+  
+      // Update Profile
+      const myProfileUpdate = (updatedData) => {
+          setLoading(true);
+          return updateProfile(auth.currentUser, updatedData);
+      };
+  
+      // Check Auth State
+      useEffect(() => {
+          const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+              setUser(currentUser);
+              setLoading(false);
+          });
+  
+          return () => unsubscribe();
+      }, []);
+  
+      const authObject = {
+          googleRegister,
+          userLogout,
+          myProfileUpdate,
+          user,
+          setUser,
+          loading, // loader -> loading করা হলো
+          setLoading
+      };
+      console.log(user);
+      return (
+          <AuthContext.Provider value={authObject}>
+              {children}
+          </AuthContext.Provider>
+      );
+  };
+  
+  export default AuthProvider;
+  
