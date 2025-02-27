@@ -36,7 +36,6 @@ const Task = () => {
             console.error("Error updating task category:", error);
         }
     };
-
     return (
         <DragDropContext onDragEnd={handleDragEnd}>
             <div className='grid lg:grid-cols-3 grid-cols-1 gap-6 2xl:mx-36 mx-2 lg:mx-4 xl:mx-20 my-10'>

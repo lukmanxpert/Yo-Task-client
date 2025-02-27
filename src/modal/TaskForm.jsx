@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 
 const TaskForm = ({filteredTask,refetch,setIsEditModalOpen}) => {
@@ -15,45 +16,38 @@ const TaskForm = ({filteredTask,refetch,setIsEditModalOpen}) => {
             date
             
         }
-        // e.target.reset()
         axios.put(`http://localhost:5000/task/${_id}`, taskUpdate)
             .then(result => {
                 console.log(result.data);
                 refetch()
                 setIsEditModalOpen(false)
-                // navigate('/')
             })
     }
     return (
         <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-            <h2 className="text-2xl font-bold mb-4 text-center">Update Task</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center text-pink-700">Update Task</h2>
 
             <form onSubmit={updateTask}  className="space-y-4">
-                {/* Title Input */}
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Title</label>
                     <input
                         type="text"
                         defaultValue={title}
                         name="title"
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500"
+                        className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
                         placeholder="Enter title"
                     />
                 </div>
-
-                {/* Description Input */}
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Description</label>
                     <textarea
                         rows="3"
                         defaultValue={description}
                         name="description"
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500"
+                        className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
                         placeholder="Enter description"
                     />
                 </div>
-
-                {/* Category Select Dropdown */}
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Category</label>
                     <select name="category"  defaultValue={category || "To-Do"}  className="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
@@ -64,11 +58,9 @@ const TaskForm = ({filteredTask,refetch,setIsEditModalOpen}) => {
                         <option value="Done">Done</option>
                     </select>
                 </div>
-
-                {/* Submit Button */}
                 <button
                     type="submit"
-                    className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg transition"
+                    className="w-full bg-pink-700 text-white py-2 px-4 rounded-lg transition"
                 >
                     Update Task
                 </button>

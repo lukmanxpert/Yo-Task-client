@@ -17,16 +17,12 @@ const Header = () => {
                 console.log("err", error);
 
             });
-
     };
-
-
-
     return (
         <div className='bg-[#34495e] border-b border-[#5b5b5b15] shadow-sm backdrop-blur-md sticky z-10 top-0'>
             <div className='2xl:mx-36 xl:mx-20 lg:px-0 flex sm:mx-4 mx-1 items-center justify-start py-3'>
                 <div className='flex items-center gap-2'>
-                    <Link to="/" className='sm:text-2xl text-white font-bold text-[12px]'>YoTask</Link>
+                    <Link to="/" className='sm:text-2xl text-pink-700 font-bold text-[12px]'>YoTask</Link>
                 </div>
                 <div className='flex justify-end md:justify-evenly flex-1/2 items-center gap-8'>
                     <ul className="hidden text-white lg:flex text-lg gap-6">
