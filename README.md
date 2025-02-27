@@ -6,8 +6,8 @@ This is a **Task Management Application** where users can **add, edit, delete, a
 ---
 
 ## 🌍 Live Links
-- **Frontend:** [https://yotask.netlify.app/](#)
-- **Backend:** [https://yo-task-server.vercel.app/](#)
+- **Frontend:** [https://yotask.netlify.app/](https://yotask.netlify.app/)
+- **Backend:** [https://yo-task-server.vercel.app/](https://yo-task-server.vercel.app/)
 
 ---
 
@@ -35,5 +35,5 @@ This is a **Task Management Application** where users can **add, edit, delete, a
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/lukmanxpert/Yo-Task-client.git
+git clone https://github.com/yourusername/task-manager.git
 cd task-manager
