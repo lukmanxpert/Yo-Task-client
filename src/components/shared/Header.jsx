@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import logo from '../../assets/task-logo.png';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
@@ -11,7 +10,7 @@ const Header = () => {
     const userLogoutHandler = () => {
         userLogout()
             .then(() => {
-                navigate('/signip')
+                navigate('/signup')
             })
             .catch((error) => {
 
@@ -24,49 +23,18 @@ const Header = () => {
 
 
     return (
-        <div className='bg-[#000000] border-b border-[#5b5b5b15] shadow-sm backdrop-blur-md sticky z-10 top-0'>
-            <div className='2xl:mx-36 xl:mx-20 lg:px-0 flex sm:mx-4 mx-1 items-center justify-between py-3'>
-                {/* Left Side - Logo */}
+        <div className='bg-[#34495e] border-b border-[#5b5b5b15] shadow-sm backdrop-blur-md sticky z-10 top-0'>
+            <div className='2xl:mx-36 xl:mx-20 lg:px-0 flex sm:mx-4 mx-1 items-center justify-start py-3'>
                 <div className='flex items-center gap-2'>
-                    <img className='sm:w-10 w-5' src={logo} alt="Azmir Uddin" />
-                    <h1 className='sm:text-2xl text-white font-bold text-[12px]'>Task Management</h1>
+                    <h1 className='sm:text-2xl text-white font-bold text-[12px]'>YoTask</h1>
                 </div>
-
-                {/* Right Side - Menu & Hire Me Button */}
-                <div className='flex items-center gap-8'>
-                    {/* Navigation Menu */}
+                <div className='flex justify-end md:justify-evenly flex-1/2 items-center gap-8'>
                     <ul className="hidden text-white lg:flex text-lg gap-6">
-                        <NavLink className={({ isActive }) => isActive ? 'text-yellow-500 border-b' : 'text-white'} to='/'>Task</NavLink>
-                        <NavLink className={({ isActive }) => isActive ? 'text-yellow-500 border-b' : 'text-white'} to='/addtask'>Add Task</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'text-pink-700 border-b' : 'text-white'} to='/'>Task</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'text-pink-700 border-b' : 'text-white'} to='/addtask'>Add Task</NavLink>
                         {/* <NavLink className={({ isActive }) => isActive ? 'text-red-500' : 'text-black'} to='/services'>Services</NavLink>
                         <NavLink className={({ isActive }) => isActive ? 'text-red-500' : 'text-black'} to='/contact'>Contact</NavLink> */}
                     </ul>
-
-                    {/* Hire Me Button */}
-
-
-                    {/* <ThemeToggle></ThemeToggle> */}
-
-                    {
-                        user ?
-                            <div className='flex items-center gap-3'> {
-
-                                <button onClick={userLogoutHandler} className='sm:py-2 py-1 px-3 sm:text-md text-sm sm:px-4 bg-gradient-to-r  text-white  rounded-2xl bg-yellow-600 font-bold'>
-                                    Logout
-                                </button>
-
-
-                            }
-                                <img className='w-[40px] rounded-full' src={user?.photoURL} alt="" /></div>
-                                :
-                        <FaUserCircle className='text-white text-3xl'/>
-                     }
-
-
-
-                    
-
-                    {/* Mobile Menu */}
                     <div className="lg:hidden">
                         <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='text-white'>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -86,6 +54,18 @@ const Header = () => {
                         )}
                     </div>
                 </div>
+                {
+                    user ?
+                        <div className='flex items-center gap-3'> {
+
+                            <button onClick={userLogoutHandler} className='sm:py-2 py-1 px-3 sm:text-md text-sm sm:px-4 bg-gradient-to-r  text-white  rounded-2xl bg-pink-700 font-bold'>
+                                Logout
+                            </button>
+                        }
+                            <img className='w-[40px] rounded-full' src={user?.photoURL} alt="" /></div>
+                        :
+                        <FaUserCircle className='text-white text-3xl' />
+                }
             </div>
         </div>
     );

@@ -6,12 +6,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const SignIn = () => {
-    const { googleRegister, setuser } = useContext(AuthContext)
+    const { googleRegister, setUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const googleSignin = () => {
         googleRegister()
             .then((result) => {
-                setuser(result.user);
+                setUser(result.user);
+                result.user && navigate('/')
                 console.log(result.user);
                 const userInfo = {
                     userName: result.user?.displayName,
@@ -21,7 +22,7 @@ const SignIn = () => {
                 }
                 axios.post('http://localhost:5000/users', userInfo)
                     .then(result => {
-                        setuser(result.data);
+                        setUser(result.data);
                         console.log(result.data);
                         navigate('/')
                     })

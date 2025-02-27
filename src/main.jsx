@@ -1,31 +1,52 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
-import MainLayout from './layouts/main/MainLayout.jsx'
-import Todos from './pages/to-do/Todos.jsx'
-import Inprogress from './pages/in-progress/Inprogress.jsx'
-import Completed from './pages/completed/Completed.jsx'
-import AuthProvider from './provider/auth-provider/AuthProvider.jsx'
-import Login from './pages/authentication/Login.jsx'
-import PrivateRoute from './provider/protected-route/PrivateRoute.jsx'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import MainLaout from './layout/MainLaout';
+import AuthProvider from './provider/AuthProvider';
+import AddTask from './components/page/AddTask';
+import Task from './components/page/Task';
+import { QueryClientProvider } from '@tanstack/react-query';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLaout></MainLaout>,
+    children: [
+      {
+        path: "/",
+        element: <PrivateRoute><Task></Task></PrivateRoute>
+      },
+      {
+        path: "/addtask",
+        element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>
+      },
+      {
+        path: "/signin",
+        element: <SignIn></SignIn>
+      }
+    ]
+  },
+]);
+
+import { QueryClient } from '@tanstack/react-query'
+import SignUp from './components/page/SignUp';
+import SignIn from './components/page/SignIn';
+import PrivateRoute from './components/Shared/PrivateRoute';
+const queryClient = new QueryClient()
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route element={<PrivateRoute />}>
-            <Route path="/" element={<MainLayout />}>
-              <Route path="/" element={<Navigate to={"/to-do's"}/>} />
-              <Route path="/to-do's" element={<Todos />} />
-              <Route path="/in-progress" element={<Inprogress />} />
-              <Route path="/completed" element={<Completed />} />
-            </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  </StrictMode>,
+  <AuthProvider>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </StrictMode>
+</AuthProvider>
 )
