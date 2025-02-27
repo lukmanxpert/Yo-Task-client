@@ -1,21 +1,14 @@
 import { Outlet } from "react-router";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/shared/social-login/Header";
 
-const MainLayout = () => {
+const MainLaout = () => {
     return (
-        <div className="flex flex-col">
-            <div>
-                <Navbar></Navbar>
-            </div>
-            <div className="flex">
-                <div className="w-2/12">
-                    <Sidebar></Sidebar>
-                </div>
-                <div><Outlet></Outlet></div>
-            </div>
+        <div>
+            <Header></Header>
+            <Outlet></Outlet>
+            {/* <Footer></Footer> */}
         </div>
     );
 };
 
-export default MainLayout;
+export default MainLaout;
