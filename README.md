@@ -35,5 +35,5 @@ This is a **Task Management Application** where users can **add, edit, delete, a
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/task-manager.git
+git clone https://github.com/lukmanxpert/Yo-Task-client.git
 cd task-manager
