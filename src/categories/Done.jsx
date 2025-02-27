@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import TaskEdidModal from "../modal/TaskEdidModal";
 import TaskDelete from "../modal/TaskDelete";
 import axios from "axios";
 
 const Done = ({ filteredTask, refetch }) => {
-    const { title, description, category, _id,date } = filteredTask
+    const { title, description, category, _id, date } = filteredTask
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     let [isOpen, setIsOpen] = useState(false)
     const dateFromMongoDB = date;
@@ -22,10 +23,8 @@ const Done = ({ filteredTask, refetch }) => {
                 console.log(result.data);
                 refetch()
                 setIsEditModalOpen(false)
-
             })
     }
-
     return (
         <div className=' mb-2  bg-[#bdc3c7] p-2 rounded-sm' >
             <div className="space-y-2">
@@ -36,15 +35,12 @@ const Done = ({ filteredTask, refetch }) => {
                     <h3 className="py-1 px-4 text-black">{formattedDate}</h3>
                 </div>
             </div>
-
-            {/* */}
             <div className="flex items-center justify-between">
                 <div className=' py-5  text-sm'>
                     <span
                         onClick={() => { setIsEditModalOpen(true) }}
                         className='relative cursor-pointer inline-block px-3 py-2 font-semibold text-white leading-tight'
                     >
-
                         <span
                             aria-hidden='true'
                             className='absolute inset-0  bg-black black rounded-full'
@@ -52,7 +48,6 @@ const Done = ({ filteredTask, refetch }) => {
                         <div className='flex items-center gap-2'>
                             <span className='relative '>Update</span>
                         </div>
-
                     </span>
                     <TaskEdidModal
                         isOpen={isEditModalOpen}
@@ -61,7 +56,6 @@ const Done = ({ filteredTask, refetch }) => {
                         refetch={refetch}
                     />
                 </div>
-                {/* delete */}
                 <div className=''>
                     <div className='flex justify-end' >
                         <span

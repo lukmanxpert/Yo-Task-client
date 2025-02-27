@@ -25,7 +25,7 @@ const Task = () => {
     const handleDragEnd = async (result) => {
         if (!result.destination) return;
 
-        const { source, destination, draggableId } = result;
+        const { destination, draggableId } = result;
 
         const newCategory = destination.droppableId;
 
@@ -40,12 +40,10 @@ const Task = () => {
     return (
         <DragDropContext onDragEnd={handleDragEnd}>
             <div className='grid lg:grid-cols-3 grid-cols-1 gap-6 2xl:mx-36 mx-2 lg:mx-4 xl:mx-20 my-10'>
-
-                {/* TO-DO */}
                 <Droppable droppableId="To-Do">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps}>
-                            <h1 className='text-center pb-3.5 text-xl font-bold sm:text-2xl text-pink-700'>TODO'S</h1>
+                            <h1 className='text-center pb-3.5 text-xl font-bold sm:text-2xl text-pink-700'>TODO&apos;S</h1>
                             <div className='bg-[#0000000e] shadow-sm backdrop-blur-md sm:p-6 p-3 rounded-2xl'>
                                 {task.filter(task => task.category === "To-Do").map((filteredTask, index) => (
                                     <Draggable key={filteredTask._id} draggableId={filteredTask._id} index={index}>

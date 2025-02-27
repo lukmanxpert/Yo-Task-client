@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import TaskEdidModal from "../modal/TaskEdidModal";
 import TaskDelete from "../modal/TaskDelete";

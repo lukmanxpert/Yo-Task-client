@@ -1,5 +1,4 @@
 import { FaGoogle } from "react-icons/fa6";
-import signUp from "../../assets/Sign up-bro.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
@@ -29,14 +28,13 @@ const SignUp = () => {
     }
     return (
         <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
-            <img className="w-72 md:w-96 lg:w-[400px] mb-6" src={signUp} alt="Sign Up" />
-
-            <button onClick={googleSignin} className="bg-black flex items-center gap-3 text-white rounded-md py-3 px-6 text-lg shadow-md">
+            <h1 className="text-red-500 font-black text-3xl my-6">You have to login first!</h1>
+            <button onClick={googleSignin} className="bg-pink-700 flex items-center gap-3 text-white rounded-md py-3 px-6 text-lg shadow-md">
                 <FaGoogle className="text-xl" />
                 Continue with Google
             </button>
 
-            <Link className="mt-5 text-lg" to={'/signin'}>
+            <Link className="mt-5 text-red-500" to={'/signin'}>
                 Already a user? <span className="text-primary font-bold">Sign In</span>
             </Link>
         </div>
